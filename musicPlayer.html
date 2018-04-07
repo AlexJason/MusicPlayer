@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Music Player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="musicPlayer.css" />
+    <script src="musicPlayer.js"></script>
+</head>
+<script>
+    document.oncontextmenu = new Function("event.returnValue=false");
+    document.onselectstart = new Function("event.returnValue=false");
+</script>
+
+<body>
+    <!--The list of music-->
+    <audiolists id="mlist">
+    </audiolists>
+
+    <div class="musicCaption">
+        <a href="javascript:;" class="a-upload" style="position: fixed; left: 15px;">
+            <input type="file" class="button" id="file" onchange="importMusic(this.files)" />•••
+        </a>
+        <span id="musicName">Music Player - No music playing.</span>
+    </div>
+    <div class="musicContorl">
+        <div>
+            <button class="button btnplay" onclick="mplayorpause()" style="position: fixed; left: 90px;"><span id="playbtn" style="position: relative; bottom: 0px; left: 2px;">►</span></button>
+            <button class="button" onclick="mstop()" style="position: fixed; left: 150px; font-size: 50px;"><span style="position: relative; bottom: 10px; left: 1px;">■</span></button>
+            <button class="button" onclick="mlast()" style="position: fixed; left: 210px;"><span style="position: relative; letter-spacing:-8px; bottom: 3px; left: -4px; font-weight: 900;">|◄</span></button>
+            <button class="button" onclick="mnext()" style="position: fixed; left: 270px;"><span style="position: relative; letter-spacing:-8px; bottom: 3px; left: -4px; font-weight: 900;">►|</span></button>
+        </div>
+        <div style="background: white; position: fixed; left: 12px; bottom: 8px; width: 64px; height: 64px;">
+            <img>
+        </div>
+    </div>
+
+</body>
+
+</html>
