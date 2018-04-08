@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="musicPlayer.css" />
     <script src="musicPlayer.js"></script>
 </head>
+
 <script>
     document.oncontextmenu = new Function("event.returnValue=false");
     document.onselectstart = new Function("event.returnValue=false");
@@ -24,6 +25,11 @@
             <input type="file" class="button" id="file" onchange="importMusic(this.files)" />•••
         </a>
         <span id="musicName">Music Player - No music playing.</span>
+    </div>
+    <div class="musicList">
+        <ul id="mname" style="position: fixed; left: 0px; top: 45px;">
+            <!--The list show on the screen-->
+        </ul>
     </div>
     <div class="musicContorl">
         <div>

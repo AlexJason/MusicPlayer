@@ -39,29 +39,25 @@ function mstop() {
 }
 
 function mnext() {
-    if (morder + 1 >= musics.length) {
+    if (morder + 1 >= musics.length)
         return;
-    }
     musics[morder].pause();
     morder++;
     document.getElementById("musicName").innerHTML = musicn[morder];
     musics[morder].load();
-    if (isplay) {
+    if (isplay)
         musics[morder].play();
-    }
 }
 
 function mlast() {
-    if (morder - 1 < 0) {
+    if (morder - 1 < 0)
         return;
-    }
     musics[morder].pause();
     morder--;
     document.getElementById("musicName").innerHTML = musicn[morder];
     musics[morder].load();
-    if (isplay) {
+    if (isplay)
         musics[morder].play();
-    }
 }
 
 function importMusic(files) {
@@ -70,6 +66,12 @@ function importMusic(files) {
         var reader = new FileReader();
         if (/audio+/.test(file.type)) { //判断文件是不是imgage类型
             reader.onload = function() {
+                for (var c in musicn) {
+                    if (musicn[c] == file.name) {
+                        alert('The music "' + file.name + '" has already existed!');
+                        return;
+                    }
+                }
                 var para = document.createElement("audio");
                 var node = document.createElement("source");
                 //var node2 = document.createTextNode('<audio id="music' + (musics.length + 1).toString() + '"><source src="' + this.result + '" type="audio/mp3" /></audio>');
@@ -81,8 +83,23 @@ function importMusic(files) {
                 element.appendChild(para);
                 musics[musics.length] = document.getElementById("music" + (musics.length + 1).toString());
                 musicn[musicn.length] = file.name.replace(/.mp3$/, '');
+                para = document.createElement('li');
+                var txt = document.createTextNode(musicn[musicn.length - 1]);
+                para.setAttribute("onclick", "playmm(" + (musics.length - 1).toString() + ")");
+                para.appendChild(txt);
+                document.getElementById('mname').appendChild(para);
             }
             reader.readAsDataURL(file);
         }
     }
+}
+
+function playmm(id) {
+    if (isplay && morder == id)
+        return;
+    mstop();
+    morder = id;
+    isplay = true;
+    changePlayState(isplay);
+    musics[morder].play();
 }
