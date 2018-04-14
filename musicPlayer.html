@@ -7,7 +7,7 @@
     <title>Music Player</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="musicPlayer.css" />
-    <script src="musicPlayer.js"></script>
+    <script src="music.js"></script>
 </head>
 
 <script>
@@ -18,13 +18,14 @@
 <body>
     <!--The list of music-->
     <audiolists id="mlist">
+        <audio>你的浏览器不支持audio标签</audio>
     </audiolists>
 
     <div class="musicCaption">
         <a href="javascript:;" class="a-upload" style="position: fixed; left: 15px;">
             <input type="file" class="button" id="file" onchange="importMusic(this.files)" />•••
         </a>
-        <span id="musicName">Music Player - No music playing.</span>
+        <span id="musicInfo">Music Player - No music playing.</span>
     </div>
     <div class="musicList">
         <ul id="mname" style="position: fixed; left: 0px; top: 45px;">
@@ -42,7 +43,9 @@
             <img>
         </div>
     </div>
-
+    <div class="musicCanvas">
+        <canvas id="canvas"></canvas>
+    </div>
 </body>
 
 </html>
